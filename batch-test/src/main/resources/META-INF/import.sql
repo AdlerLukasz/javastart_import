@@ -1,0 +1,10 @@
+insert into user (firstName, lastName) values ('Craig', 'Coleman');
+insert into user (firstName, lastName) values ('Gregory', 'Martin');
+insert into user (firstName, lastName) values ('Tina', 'Rice');
+insert into user (firstName, lastName) values ('Rose', 'Knight');
+insert into user (firstName, lastName) values ('James', 'Scott');
+insert into user (firstName, lastName) values ('Helen', 'Kennedy');
+insert into user (firstName, lastName) values ('Norma', 'Sanchez');
+insert into user (firstName, lastName) values ('Diane', 'Moreno');
+insert into user (firstName, lastName) values ('Clarence', 'Hughes');
+insert into user (firstName, lastName) values ('Walter', 'Boyd');

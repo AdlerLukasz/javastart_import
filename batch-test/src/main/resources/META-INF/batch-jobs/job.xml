@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="namesJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+	<step id="namesProcessor">
+		<chunk item-count="2">
+			<reader ref="nameReader" />
+			<processor ref="nameProcessor" />
+			<writer ref="nameWriter" />
+			<skippable-exception-classes>
+				<include class="java.lang.Exception"/>
+			</skippable-exception-classes>
+		</chunk>
+	</step>
+</job>

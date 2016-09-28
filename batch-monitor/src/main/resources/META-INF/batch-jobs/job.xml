@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="job" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+
+	<!-- Kopiujemy pliki -->
+	<step id="copyFiles">
+		<batchlet ref="copyBatchlet" />
+		<next on="MOVE_SUCCESS" to="jobDecider"/>
+		<fail on="MOVE_FAILED"/>
+	</step>
+
+	<!-- 
+		Jeżeli nie było wyjątku, to sprawdzamy, 
+		czy jakiekolwiek pliki zostały skopiowabne 
+	-->
+	<decision ref="jobDecider" id="jobDecider">
+		<next on="IMPORT_DATA" to="importData" />
+		<end on="NO_FILES" exit-status="NO_FILES" />
+	</decision>
+
+	<!-- Import danych do bazy danych -->
+	<step id="importData">
+		<chunk>
+			<reader ref="csvReader" />
+			<processor ref="csvProcessor" />
+			<writer ref="csvWriter" />
+		</chunk>
+		<end on="WRITE_COMPLETE" exit-status="IMPORT_COMPLETE"/>
+	</step>
+
+</job>
